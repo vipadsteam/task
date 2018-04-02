@@ -23,4 +23,15 @@ public class MasterElectService implements IMasterElectService {
 		return true;
 	}
 
+	@Override
+	public int getMasterLoopTime() {
+		return 3000;
+	}
+
+	@Override
+	public int getMasterRandomTime() {
+		// TODO Auto-generated method stub
+		return 5000;
+	}
+
 }

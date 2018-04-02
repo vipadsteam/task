@@ -10,6 +10,7 @@ import java.util.concurrent.ThreadLocalRandom;
 import org.adam.goku.task.chain.income.MasterIncome;
 import org.adam.goku.task.common.ServiceEnumConstants;
 import org.adam.goku.task.log.LogService;
+import org.adam.goku.task.service.api.IMasterElectService;
 import org.adam.goku.task.service.api.IRequestLogService;
 import org.springframework.adam.common.bean.ResultVo;
 import org.springframework.adam.common.utils.AdamExceptionUtils;
@@ -35,6 +36,9 @@ public class MasterIniter implements InitializingBean {
 	private ServiceChain serviceChain;
 
 	@Autowired
+	private IMasterElectService masterElectService;
+
+	@Autowired
 	private IRequestLogService requestLogService;
 
 	private void initMaster() {
@@ -47,7 +51,7 @@ public class MasterIniter implements InitializingBean {
 			} catch (Exception e) {
 				logService.sendErrorAccountLog("Master job出错：" + AdamExceptionUtils.getStackTrace(e));
 			}
-			sleep(3000, 5000);
+			sleep(masterElectService.getMasterLoopTime(), masterElectService.getMasterRandomTime());
 		}
 	}
 

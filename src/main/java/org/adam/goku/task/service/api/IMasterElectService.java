@@ -11,4 +11,8 @@ public interface IMasterElectService {
 
 	public boolean isMaster();
 
+	public int getMasterLoopTime();
+
+	public int getMasterRandomTime();
+
 }
