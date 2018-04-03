@@ -9,8 +9,8 @@ import java.util.concurrent.Executors;
 
 import org.adam.goku.task.chain.income.ITaskQueue;
 import org.adam.goku.task.chain.income.Task;
-import org.adam.goku.task.log.LogService;
 import org.adam.goku.task.service.api.IRequestLogService;
+import org.adam.test.goku.task.log.LogService;
 import org.apache.commons.collections.CollectionUtils;
 import org.springframework.adam.common.utils.AdamExceptionUtils;
 import org.springframework.adam.common.utils.ThreadLocalHolder;
