@@ -11,7 +11,7 @@ import org.adam.goku.task.chain.income.MasterIncome;
 import org.adam.goku.task.common.ServiceEnumConstants;
 import org.adam.goku.task.service.api.IMasterElectService;
 import org.adam.goku.task.service.api.IRequestLogService;
-import org.adam.test.goku.task.log.LogService;
+import org.springframework.adam.client.ILogService;
 import org.springframework.adam.common.bean.ResultVo;
 import org.springframework.adam.common.utils.AdamExceptionUtils;
 import org.springframework.adam.common.utils.ThreadLocalHolder;
@@ -30,7 +30,7 @@ import org.springframework.stereotype.Component;
 public class MasterIniter implements InitializingBean {
 
 	@Autowired
-	private LogService logService;
+	private ILogService logService;
 
 	@Autowired
 	private ServiceChain serviceChain;
