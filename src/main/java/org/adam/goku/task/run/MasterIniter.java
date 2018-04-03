@@ -42,8 +42,8 @@ public class MasterIniter implements InitializingBean {
 	private IRequestLogService requestLogService;
 
 	private void initMaster() {
-		ThreadLocalHolder.setRequestLogFlag(requestLogService.getMasterLogFlag());
 		while (true) {
+			ThreadLocalHolder.setRequestLogFlag(requestLogService.getMasterLogFlag());
 			ResultVo<String> result = new ResultVo<String>();
 			MasterIncome income = new MasterIncome();
 			try {

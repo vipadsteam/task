@@ -37,8 +37,8 @@ public class SlaverIniter implements InitializingBean {
 	private IRequestLogService requestLogService;
 
 	private void initSlaver() {
-		ThreadLocalHolder.setRequestLogFlag(requestLogService.getSlaveLogFlag());
 		while (true) {
+			ThreadLocalHolder.setRequestLogFlag(requestLogService.getSlaveLogFlag());
 			List<Task> tasks = taskerQueue.getTasks();
 			if (CollectionUtils.isEmpty(tasks)) {
 				sleep();
