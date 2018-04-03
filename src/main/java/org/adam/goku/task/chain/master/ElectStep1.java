@@ -37,7 +37,7 @@ public class ElectStep1 implements IService<MasterIncome, String> {
 	@Override
 	public AbsCallbacker doService(MasterIncome income, ResultVo<String> output) throws Exception {
 		// 去竞选是否能成为Master
-		if(masterElectService.isMaster()){
+		if(masterElectService.isMaster(income)){
 			output.setResultCode(BaseReslutCodeConstants.CODE_SUCCESS);
 		}else{
 			output.setResultCode(BaseReslutCodeConstants.CODE_SUCCESS_AND_BREAK);

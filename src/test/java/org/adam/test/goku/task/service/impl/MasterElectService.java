@@ -3,6 +3,7 @@
  */
 package org.adam.test.goku.task.service.impl;
 
+import org.adam.goku.task.chain.income.MasterIncome;
 import org.adam.goku.task.service.api.IMasterElectService;
 import org.springframework.stereotype.Component;
 
@@ -19,7 +20,7 @@ public class MasterElectService implements IMasterElectService {
 	 * @see org.adam.goku.task.service.api.IMasterElectService#isMaster()
 	 */
 	@Override
-	public boolean isMaster() {
+	public boolean isMaster(MasterIncome income) {
 		return true;
 	}
 
