@@ -43,15 +43,20 @@ public class MasterIniter implements InitializingBean {
 
 	private void initMaster() {
 		while (true) {
-			ThreadLocalHolder.setRequestLogFlag(requestLogService.getMasterLogFlag());
-			ResultVo<String> result = new ResultVo<String>();
-			MasterIncome income = new MasterIncome();
 			try {
-				serviceChain.doServer(income, result, ServiceEnumConstants.MASTER);
+				ThreadLocalHolder.setRequestLogFlag(requestLogService.getMasterLogFlag());
+				ResultVo<String> result = new ResultVo<String>();
+				MasterIncome income = new MasterIncome();
+				try {
+					serviceChain.doServer(income, result, ServiceEnumConstants.MASTER);
+				} catch (Exception e) {
+					logService.sendErrorAccountLog("Master job出错：" + AdamExceptionUtils.getStackTrace(e));
+				}
+				sleep(masterElectService.getMasterLoopTime(), masterElectService.getMasterRandomTime());
 			} catch (Exception e) {
-				logService.sendErrorAccountLog("Master job出错：" + AdamExceptionUtils.getStackTrace(e));
+				logService.sendErrorAccountLog("master出错：" + AdamExceptionUtils.getStackTrace(e));
+				sleep(masterElectService.getMasterLoopTime(), masterElectService.getMasterRandomTime());
 			}
-			sleep(masterElectService.getMasterLoopTime(), masterElectService.getMasterRandomTime());
 		}
 	}
 

@@ -3,11 +3,15 @@
  */
 package org.adam.goku.task.chain.income;
 
+import java.io.Serializable;
+
 /**
  * @author USER
  *
  */
-public abstract class Task {
+public abstract class Task implements Serializable {
+
+	private static final long serialVersionUID = 5374999227696429085L;
 
 	private String taskType;
 

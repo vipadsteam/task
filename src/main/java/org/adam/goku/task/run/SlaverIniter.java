@@ -38,14 +38,19 @@ public class SlaverIniter implements InitializingBean {
 
 	private void initSlaver() {
 		while (true) {
-			ThreadLocalHolder.setRequestLogFlag(requestLogService.getSlaveLogFlag());
-			List<Task> tasks = taskerQueue.getTasks();
-			if (CollectionUtils.isEmpty(tasks)) {
+			try {
+				ThreadLocalHolder.setRequestLogFlag(requestLogService.getSlaveLogFlag());
+				List<Task> tasks = taskerQueue.getTasks();
+				if (CollectionUtils.isEmpty(tasks)) {
+					sleep();
+					continue;
+				}
+				for (Task task : tasks) {
+					task.doTask();
+				}
+			} catch (Exception e) {
+				logService.sendErrorAccountLog("slave出错：" + AdamExceptionUtils.getStackTrace(e));
 				sleep();
-				continue;
-			}
-			for (Task task : tasks) {
-				task.doTask();
 			}
 		}
 	}
