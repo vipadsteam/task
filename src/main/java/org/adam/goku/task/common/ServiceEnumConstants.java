@@ -9,6 +9,6 @@ package org.adam.goku.task.common;
  */
 public class ServiceEnumConstants {
 
-	public static final String MASTER = "master";
+	public static final String MASTER = "adam-task-master";
 
 }

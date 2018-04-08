@@ -17,7 +17,7 @@ public class TestEntrance {
 	 * @throws InterruptedException
 	 */
 	public static void main(String[] args) throws InterruptedException {
-		ApplicationContext context = new ClassPathXmlApplicationContext("classpath:/applicationContext.xml");
+		ApplicationContext context = new ClassPathXmlApplicationContext("classpath:/spring-task.xml");
 		while (true) {
 			Thread.sleep(10000);
 		}
